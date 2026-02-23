@@ -1,0 +1,28 @@
+def hill_climbing(data):
+    n = len(data)
+
+    current = 0
+    
+    while True:
+        left = current - 1
+        right = current + 1
+
+        next_state = current
+
+        if left >= 0 and data[left] > data[next_state]:
+            next_state = left
+
+        if right < n and data[right] > data[next_state]:
+            next_state = right
+
+        if next_state == current:
+            return current, data[current]
+
+        current = next_state
+
+data = [1, 3, 7, 12, 9, 5, 21]
+index, peak = hill_climbing(data)
+
+print("Dataset:", data)
+print("Peak Index:", index)
+print("Peak Value:", peak)
