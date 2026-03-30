@@ -1,0 +1,28 @@
+print("Weather Classification Expert System")
+print("-------------------------------------")
+
+temperature = float(input("Enter temperature in Celsius: "))
+humidity = float(input("Enter humidity percentage: "))
+wind_speed = float(input("Enter wind speed (km/h): "))
+
+print("\nAnalyzing weather conditions...\n")
+
+if humidity > 70 and wind_speed > 20:
+    weather = "Stormy"
+
+elif temperature > 30 and humidity >= 50:
+    weather = "Hot and Humid"
+
+elif temperature > 30 and humidity < 50:
+    weather = "Sunny"
+
+elif 20 <= temperature <= 30 and humidity >= 50:
+    weather = "Cloudy"
+
+elif temperature < 20:
+    weather = "Cold"
+
+else:
+    weather = "Moderate"
+
+print("Weather Condition:", weather)
