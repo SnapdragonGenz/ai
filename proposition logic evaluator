@@ -1,0 +1,39 @@
+print("Propositional Logic Evaluator")
+print("--------------------------------")
+
+# Input statement for P
+statement_P = input("Enter statement for P: ")
+value_P = input("Enter truth value for P (True/False): ").strip().lower()
+
+# Input statement for Q
+statement_Q = input("\nEnter statement for Q: ")
+value_Q = input("Enter truth value for Q (True/False): ").strip().lower()
+
+# Validate and convert truth values for P
+if value_P == "true":
+    P = True
+elif value_P == "false":
+    P = False
+else:
+    print("Invalid truth value entered for P. Please enter True or False.")
+    exit()
+
+# Validate and convert truth values for Q
+if value_Q == "true":
+    Q = True
+elif value_Q == "false":
+    Q = False
+else:
+    print("Invalid truth value entered for Q. Please enter True or False.")
+    exit()
+
+print("\nGiven Propositions:")
+print("P:", statement_P, "=", P)
+print("Q:", statement_Q, "=", Q)
+print("\nEvaluation of Logical Connectives:")
+print("P AND Q :", P and Q)
+print("P OR Q :", P or Q)
+print("NOT P :", not P)
+print("NOT Q :", not Q)
+print("P IMPLIES Q :", (not P) or Q) 
+print("P BICONDITIONAL Q :", P == Q) 
