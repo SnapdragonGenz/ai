@@ -1,0 +1,27 @@
+from heapq import *
+
+def astar(g, h, s, goal):
+    pq = [(h[s], 0, s, [s])]
+
+    while pq:
+        f, gc, n, p = heappop(pq)
+
+        if n == goal:
+            return p
+
+        for c, w in g[n]:
+            heappush(pq, (gc + w + h[c], gc + w, c, p + [c]))
+
+g = {
+    'A':[('B',2),('C',4)],
+    'B':[('D',3),('E',1)],
+    'C':[('F',5)],
+    'D':[('G',2)],
+    'E':[('G',4)],
+    'F':[('G',1)],
+    'G':[]
+}
+
+h = {'A':7,'B':6,'C':2,'D':1,'E':3,'F':1,'G':0}
+
+print(astar(g, h, 'A', 'G'))
