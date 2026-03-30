@@ -1,0 +1,31 @@
+print("RULE-BASED CHATBOT SYSTEM")
+print("Hello! I can give meanings of some AI-related terms.")
+print("Type 'bye' to exit the chatbot.\n")
+
+while True:
+    user = input("You: ").lower()
+
+    if "ai" in user:
+        print("Chatbot: Artificial Intelligence is the simulation of human intelligence in machines.")
+
+    elif "machine learning" in user:
+        print("Chatbot: Machine Learning is a branch of AI that allows computers to learn from data.")
+
+    elif "data" in user:
+        print("Chatbot: Data is a collection of facts, numbers, or information used for analysis.")
+
+    elif "python" in user:
+        print("Chatbot: Python is a high-level programming language widely used in AI and data science.")
+
+    elif "algorithm" in user:
+        print("Chatbot: An algorithm is a step-by-step procedure used to solve a problem.")
+
+    elif user in ["hello", "hi"]:
+        print("Chatbot: Hello! You can ask me meanings of AI-related terms.")
+
+    elif user == "bye":
+        print("Chatbot: Goodbye! Have a nice day.")
+        break
+
+    else:
+        print("Chatbot: Sorry, I don't know that meaning yet.")
