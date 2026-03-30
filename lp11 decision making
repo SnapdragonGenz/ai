@@ -1,0 +1,27 @@
+def vacuum_agent(location, status_A, status_B):
+    if location == "A" and status_A == "Dirty":
+        return "Clean Room A"
+    elif location == "A" and status_A == "Clean" and status_B == "Dirty":
+        return "Move Right to Room B"
+    elif location == "B" and status_B == "Dirty":
+        return "Clean Room B"
+    elif location == "B" and status_B == "Clean" and status_A == "Dirty":
+        return "Move Left to Room A"
+    elif status_A == "Clean" and status_B == "Clean":
+        return "Stop - Both rooms are clean"
+
+# Input location
+location = input("Enter current location (A/B): ").upper()
+
+if location not in ["A", "B"]:
+    print("Invalid location entered")
+else:
+    status_A = input("Enter status of Room A (Clean/Dirty): ").capitalize()
+    status_B = input("Enter status of Room B (Clean/Dirty): ").capitalize()
+
+    action = vacuum_agent(location, status_A, status_B)
+
+    print("\nAgent Location:", location)
+    print("Room A Status:", status_A)
+    print("Room B Status:", status_B)
+    print("\nAction Performed by Agent:", action)
