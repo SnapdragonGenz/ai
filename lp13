@@ -1,0 +1,48 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk import pos_tag, ne_chunk
+from nltk.chunk import RegexpParser
+
+# Download required NLTK resources
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker')
+nltk.download('words')
+
+text = "AI researcher Andrew Ng developed machine learning systems at Stanford University in California"
+
+print("Original Sentence:", text)
+
+# 1. Tokenization
+tokens = word_tokenize(text)
+print("\n1. Tokens:", tokens)
+
+# 2. Stopword Removal
+stop_words = set(stopwords.words("english"))
+filtered = [w for w in tokens if w.lower() not in stop_words]
+print("\n2. After Stopword Removal:", filtered)
+
+# 3. Stemming
+stemmer = PorterStemmer()
+stems = [stemmer.stem(w) for w in filtered]
+print("\n3. Stemmed Words:", stems)
+
+# 4. POS Tagging
+pos = pos_tag(tokens)
+print("\n4. POS Tags:", pos)
+
+# 5. Chunking
+grammar = "NP: {<DT>?<JJ>*<NN.*>+}"
+chunker = RegexpParser(grammar)
+print("\n5. Chunking:")
+print(chunker.parse(pos))
+
+# 6. Named Entity Recognition
+print("\n6. Named Entities:")
+for chunk in ne_chunk(pos):
+    if hasattr(chunk, "label"):
+        name = " ".join(c[0] for c in chunk)
+        print(name, "->", chunk.label())
